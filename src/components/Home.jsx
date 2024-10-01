@@ -8,8 +8,45 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 
 export const Home = () => {
+  const getCrypto = async (...ids) => {
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        "x-cg-demo-api-key": "CG-BFZ4VisezRhHydG8AwE61kVa",
+      },
+    };
+    for (const id of ids) {
+      const url = `https://api.coingecko.com/api/v3/coins/${id}`;
+      const response = await fetch(url, options);
+      const data = await response.json();
+      console.log(data);
+    }
+  };
+
+  useEffect(() => {
+    getCrypto("ethereum", "bitcoin", "binancecoin");
+  }, []);
   const Assest = () => {
-    return <div className="assets">assets</div>;
+    return (
+      <div className="assets">
+        <h4>assets</h4>
+        <div className="assets-div">
+          <div className="assets-child">
+            <div className="asset-img">
+              <img
+                src="https://coin-images.coingecko.com/coins/images/825/large/bnb-icon2_2x.png?1696501970"
+                alt=""
+              />
+            </div>
+            <div className="asset-name">
+              <h4>bnb</h4>
+              <p>binance</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   };
   const BalanceComponent = () => {
     return (
