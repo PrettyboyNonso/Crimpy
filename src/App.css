@@ -155,7 +155,7 @@
   }
 
   .asset-name {
-    flex: 0 0 15%;
+    flex: 0 0 20%;
   }
 
   .asset-name h4 {
@@ -166,5 +166,19 @@
     font-family: "Karla", sans-serif;
     text-transform: capitalize;
     color: rgb(223, 223, 223);
+  }
+
+  .asset-graph {
+    flex: 0 0 40%;
+  }
+
+  .asset-price {
+  }
+
+  .asset-price p {
+    font-size: 13px;
+    color: green;
+    font-family: "Karla", sans-serif;
+    text-transform: capitalize;
   }
 }

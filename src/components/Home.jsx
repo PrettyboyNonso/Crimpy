@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
 
 export const Home = () => {
+  const [assetState, setAssetState] = useState([]);
   const getCrypto = async (...ids) => {
     const options = {
       method: "GET",
@@ -16,32 +17,36 @@ export const Home = () => {
         "x-cg-demo-api-key": "CG-BFZ4VisezRhHydG8AwE61kVa",
       },
     };
+    const assets = [];
     for (const id of ids) {
       const url = `https://api.coingecko.com/api/v3/coins/${id}`;
       const response = await fetch(url, options);
       const data = await response.json();
-      console.log(data);
+      assets.push(data);
     }
+    setAssetState(assets);
   };
 
   useEffect(() => {
-    getCrypto("ethereum", "bitcoin", "binancecoin");
+    getCrypto("bitcoin", "ethereum", "binancecoin");
   }, []);
-  const Assest = () => {
+  const Assest = ({ crypto }) => {
     return (
       <div className="assets">
-        <h4>assets</h4>
         <div className="assets-div">
           <div className="assets-child">
             <div className="asset-img">
-              <img
-                src="https://coin-images.coingecko.com/coins/images/825/large/bnb-icon2_2x.png?1696501970"
-                alt=""
-              />
+              <img src={crypto?.image?.large} alt="" />
             </div>
             <div className="asset-name">
-              <h4>bnb</h4>
-              <p>binance</p>
+              <h4>{crypto?.symbol}</h4>
+              <p>{crypto?.name}</p>
+            </div>
+
+            <div className="asset-graph"></div>
+            <div className="asset-price">
+              <h4>{`$${crypto?.market_data?.current_price?.usd}`}</h4>
+              <p>+$180 (0.9)%</p>
             </div>
           </div>
         </div>
@@ -53,7 +58,7 @@ export const Home = () => {
       <div className="balance-component">
         <div className="portfolio-balance">
           <p>portfolio balance</p>
-          <h2>$375,000.65</h2>
+          <h2>$350,000.65</h2>
           <div className="today-profit">
             <FontAwesomeIcon
               icon={faArrowTrendUp}
@@ -118,7 +123,12 @@ export const Home = () => {
         </div>
       </div>
       <BalanceComponent />
-      <Assest />
+      <div className="assets">
+        <h4>assets</h4>
+      </div>
+      {assetState?.map((value, index) => (
+        <Assest crypto={value} />
+      ))}
     </div>
   ) : (
     <div className="smaller-device">
