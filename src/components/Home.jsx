@@ -30,7 +30,7 @@ export const Home = () => {
           <div className="withdraw-icon">
             <FontAwesomeIcon
               icon={faRightLeft}
-              style={{ color: "white", fontSize: "20px" }}
+              style={{ color: "white", fontSize: "18px" }}
             />
             <p>withdraw</p>
           </div>
@@ -38,7 +38,7 @@ export const Home = () => {
           <div className="withdraw-icon">
             <FontAwesomeIcon
               icon={faChartBar}
-              style={{ color: "white", fontSize: "20px" }}
+              style={{ color: "white", fontSize: "18px" }}
             />
             <p>market</p>
           </div>
