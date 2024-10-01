@@ -115,7 +115,7 @@ export const Home = () => {
     <div className="home">
       <div className="header-app">
         <div className="first-head-flex">
-          <p>hello, al husni!</p>
+          <p>hello, Jessica WD!</p>
           <h3>welcome to crimpy</h3>
         </div>
         <div className="bell-icon">
