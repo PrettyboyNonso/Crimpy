@@ -9,6 +9,10 @@ import { useEffect, useState } from "react";
 
 export const Home = () => {
   const [assetState, setAssetState] = useState([]);
+  function formatNumberWithCommas(number) {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   const getCrypto = async (...ids) => {
     const options = {
       method: "GET",
@@ -23,6 +27,7 @@ export const Home = () => {
       const response = await fetch(url, options);
       const data = await response.json();
       assets.push(data);
+      console.log(data);
     }
     setAssetState(assets);
   };
@@ -30,6 +35,28 @@ export const Home = () => {
   useEffect(() => {
     getCrypto("bitcoin", "ethereum", "binancecoin");
   }, []);
+
+  const LoadingAsset = () => {
+    return (
+      <div className="assets">
+        <div className="assets-div">
+          <div className="assets-child">
+            <div className="asset-img loading-asset-img"></div>
+            <div className="asset-name Loading-asset-name">
+              <h4></h4>
+              <p></p>
+            </div>
+
+            <div className="asset-graph loading-asset-graph"></div>
+            <div className="asset-price loading-asset-price">
+              <h4></h4>
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
   const Assest = ({ crypto }) => {
     return (
       <div className="assets">
@@ -45,8 +72,36 @@ export const Home = () => {
 
             <div className="asset-graph"></div>
             <div className="asset-price">
-              <h4>{`$${crypto?.market_data?.current_price?.usd}`}</h4>
-              <p>+$180 (0.9)%</p>
+              <h4>{`$${formatNumberWithCommas(
+                crypto?.market_data?.current_price?.usd
+              )}`}</h4>
+              {/* <p>{+$180 (0.9)%}</p> */}
+              <p
+                style={{
+                  color:
+                    crypto?.market_data?.price_change_24h_in_currency?.usd > 0
+                      ? "green"
+                      : "red",
+                }}
+              >
+                {Math.round(
+                  crypto?.market_data?.price_change_24h_in_currency?.usd * 10
+                ) /
+                  10 >
+                0
+                  ? `+ ${formatNumberWithCommas(
+                      Math.round(
+                        crypto?.market_data?.price_change_24h_in_currency?.usd *
+                          10
+                      ) / 10
+                    )} `
+                  : formatNumberWithCommas(
+                      Math.round(
+                        crypto?.market_data?.price_change_24h_in_currency?.usd *
+                          10
+                      ) / 10
+                    )}
+              </p>
             </div>
           </div>
         </div>
@@ -129,6 +184,13 @@ export const Home = () => {
       {assetState?.map((value, index) => (
         <Assest crypto={value} />
       ))}
+      {assetState.length === 0 && (
+        <>
+          <LoadingAsset />
+          <LoadingAsset />
+          <LoadingAsset />
+        </>
+      )}
     </div>
   ) : (
     <div className="smaller-device">
