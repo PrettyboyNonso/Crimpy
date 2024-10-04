@@ -89,18 +89,18 @@ export const Home = () => {
                 ) /
                   10 >
                 0
-                  ? `+ ${formatNumberWithCommas(
+                  ? `+$${formatNumberWithCommas(
                       Math.round(
                         crypto?.market_data?.price_change_24h_in_currency?.usd *
                           10
                       ) / 10
                     )} `
-                  : formatNumberWithCommas(
+                  : `$${formatNumberWithCommas(
                       Math.round(
                         crypto?.market_data?.price_change_24h_in_currency?.usd *
                           10
                       ) / 10
-                    )}
+                    )}`}
               </p>
             </div>
           </div>
@@ -181,16 +181,17 @@ export const Home = () => {
       <div className="assets">
         <h4>assets</h4>
       </div>
-      {assetState?.map((value, index) => (
-        <Assest crypto={value} />
-      ))}
-      {assetState.length === 0 && (
-        <>
-          <LoadingAsset />
-          <LoadingAsset />
-          <LoadingAsset />
-        </>
-      )}
+      <div className="asset-flex-div">
+        {assetState.length === 0 ? (
+          <>
+            <LoadingAsset />
+            <LoadingAsset />
+            <LoadingAsset />
+          </>
+        ) : (
+          assetState?.map((value, index) => <Assest crypto={value} />)
+        )}
+      </div>
     </div>
   ) : (
     <div className="smaller-device">
