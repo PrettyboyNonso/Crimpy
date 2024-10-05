@@ -178,8 +178,8 @@ export const Home = () => {
         </div>
       </div>
       <BalanceComponent />
-      <div className="assets">
-        <h4>assets</h4>
+      <div className="assets-head">
+        <h3>assets</h3>
       </div>
       <div className="asset-flex-div">
         {assetState.length === 0 ? (

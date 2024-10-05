@@ -62,7 +62,7 @@
     padding-bottom: 1em;
     padding-left: 0.5em;
     padding-right: 0.5em;
-    margin-top: 1.5em;
+    margin-top: 1em;
     margin-bottom: 1.5em;
     border-radius: 10px;
     background-color: rgb(27, 27, 27);
@@ -72,13 +72,14 @@
     color: white;
     text-transform: capitalize;
     font-family: "Karla", sans-serif;
-    font-size: 14px;
+    font-size: 13px;
   }
   .portfolio-balance h2 {
     color: white;
     margin-top: 0.3em;
     text-transform: capitalize;
     font-family: "Karla", sans-serif;
+    font-size: 22px;
   }
 
   .today-profit {
@@ -91,18 +92,18 @@
   .today-profit b {
     color: white;
     font-family: "Karla", sans-serif;
-    font-weight: 400;
+    font-weight: 300;
   }
 
   .today-profit p {
     color: rgb(112, 112, 112);
-    font-size: 14px;
+    font-size: 13px;
   }
 
   .withdraw-part {
     width: 100%;
     height: 100%;
-    padding: 0.6em 0;
+    padding: 0.4em 0;
     margin-top: 1.5em;
     border-radius: 30px;
     background-color: rgb(56, 56, 56);
@@ -126,12 +127,10 @@
     text-transform: capitalize;
   }
 
-  .assets {
-    margin-top: 0.8em;
-  }
-  .assets h4 {
+  .assets-head h3 {
     font-family: "Karla", sans-serif;
     text-transform: capitalize;
+    font-size: 16px;
   }
 
   .assets-div {
@@ -141,7 +140,7 @@
   .assets-child {
     display: flex;
     align-items: center;
-    gap: 0.4em;
+    gap: 0.8em;
     width: 100%;
   }
 
@@ -158,26 +157,33 @@
   }
 
   .asset-name {
-    flex: 0 0 20%;
+    flex: 0 0 16%;
   }
 
   .asset-name h4 {
     font-family: "Karla", sans-serif;
     text-transform: uppercase;
+    font-size: 14px;
   }
   .asset-name p {
     font-family: "Karla", sans-serif;
     text-transform: capitalize;
     color: rgb(223, 223, 223);
+    font-size: 14px;
   }
 
   .asset-graph {
     flex: 0 0 40%;
+    height: 1em;
   }
 
   .asset-price {
   }
 
+  .asset-price h4 {
+    font-size: 14px;
+    font-family: "Karla", sans-serif;
+  }
   .asset-price p {
     font-size: 13px;
     color: green;
@@ -188,7 +194,8 @@
   .asset-flex-div {
     display: flex;
     flex-direction: column;
-    gap: 0.5em;
+    gap: 0.8em;
+    margin-top: 0.5em;
   }
 
   @keyframes LoadAssets {
