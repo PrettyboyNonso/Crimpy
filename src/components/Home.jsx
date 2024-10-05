@@ -6,12 +6,41 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
+import { Line } from "react-chartjs-2";
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+} from "chart.js";
 
 export const Home = () => {
   const [assetState, setAssetState] = useState([]);
+  const [graphDataState, setGraphDataState] = useState([]);
   function formatNumberWithCommas(number) {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
+  ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement);
+
+  const getGraphData = async (...ids) => {
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        "x-cg-demo-api-key": "CG-BFZ4VisezRhHydG8AwE61kVa",
+        mode: "no-cors",
+      },
+    };
+    const graphData = [];
+    for (const id of ids) {
+      const url = `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=30&interval=daily`;
+      const response = await fetch(url, options);
+      const data = await response.json();
+      graphData.push(data);
+    }
+    setGraphDataState(graphData);
+  };
 
   const getCrypto = async (...ids) => {
     const options = {
@@ -27,13 +56,55 @@ export const Home = () => {
       const response = await fetch(url, options);
       const data = await response.json();
       assets.push(data);
-      console.log(data);
     }
     setAssetState(assets);
   };
 
+  const AssetGraph = () => {
+    const [chartData, setChartData] = useState({});
+    useEffect(() => {
+      const label = ["28th june", "29th June", "30 June", "1st July"];
+      const prices = [56000, 56802, 67000, 89000];
+      setChartData({
+        labels: label,
+        datasets: [
+          {
+            label: "Price in USD",
+            data: prices,
+            borderColor: "rgba(75, 192, 192, 1)",
+            fill: false,
+            tension: 0.1,
+          },
+        ],
+      });
+    }, []);
+
+    const chartOptions = {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        x: {
+          display: false,
+        },
+        y: {
+          display: false,
+        },
+      },
+    };
+    return (
+      <div className="asset-graph-child">
+        {Object.keys(chartData).length > 0 ? (
+          <Line data={chartData} options={chartOptions} />
+        ) : (
+          <p>Loading chart...</p>
+        )}
+      </div>
+    );
+  };
+
   useEffect(() => {
     getCrypto("bitcoin", "ethereum", "binancecoin");
+    getGraphData("bitcoin", "ethereum", "binancecoin");
   }, []);
 
   const LoadingAsset = () => {
@@ -70,7 +141,9 @@ export const Home = () => {
               <p>{crypto?.name}</p>
             </div>
 
-            <div className="asset-graph"></div>
+            <div className="asset-graph">
+              <AssetGraph />
+            </div>
             <div className="asset-price">
               <h4>{`$${formatNumberWithCommas(
                 crypto?.market_data?.current_price?.usd
