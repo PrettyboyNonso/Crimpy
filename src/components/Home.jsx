@@ -17,30 +17,42 @@ import {
 
 export const Home = () => {
   const [assetState, setAssetState] = useState([]);
-  const [graphDataState, setGraphDataState] = useState([]);
+  const [graphDetailsState, setGraphDetailsState] = useState([]);
   function formatNumberWithCommas(number) {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
   ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement);
 
-  // const getGraphData = async (...ids) => {
-  //   const options = {
-  //     method: "GET",
-  //     headers: {
-  //       accept: "application/json",
-  //       "x-cg-demo-api-key": "CG-BFZ4VisezRhHydG8AwE61kVa",
-  //       mode: "no-cors",
-  //     },
-  //   };
-  //   const graphData = [];
-  //   for (const id of ids) {
-  //     const url = `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=30&interval=daily`;
-  //     const response = await fetch(url, options);
-  //     const data = await response.json();
-  //     graphData.push(data);
-  //   }
-  //   setGraphDataState(graphData);
-  // };
+  const getGraphData = async (...ids) => {
+    const options = {
+      method: "GET",
+      headers: {
+        accept: "application/json",
+        "x-cg-demo-api-key": "CG-BFZ4VisezRhHydG8AwE61kVa",
+      },
+    };
+    const graphData = [];
+    const overAllDataArray = [];
+    let graphDetails = {};
+    for (const id of ids) {
+      const url = `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=10&interval=daily`;
+      const response = await fetch(url, options);
+      const data = await response.json();
+      for (let graph of data?.prices) {
+        const prices = [];
+        const timestamp = [];
+        prices.push(graph[1]);
+        timestamp.push(graph[0]);
+
+        graphDetails.labelPrice = prices;
+        graphDetails.labelTimestamp = timestamp;
+      }
+      overAllDataArray.push(graphDetails);
+    }
+
+    setGraphDetailsState(overAllDataArray);
+    console.log(overAllDataArray);
+  };
 
   const getCrypto = async (...ids) => {
     const options = {
@@ -57,6 +69,7 @@ export const Home = () => {
       const data = await response.json();
       assets.push(data);
     }
+
     setAssetState(assets);
   };
 
@@ -73,7 +86,7 @@ export const Home = () => {
             data: prices,
             borderColor: "rgba(75, 192, 192, 1)",
             fill: false,
-            tension: 0.1,
+            tension: 0.4,
           },
         ],
       });
@@ -104,7 +117,7 @@ export const Home = () => {
 
   useEffect(() => {
     getCrypto("bitcoin", "ethereum", "binancecoin");
-    // getGraphData("bitcoin", "ethereum", "binancecoin");
+    getGraphData("bitcoin", "ethereum", "binancecoin");
   }, []);
 
   const LoadingAsset = () => {
@@ -168,7 +181,9 @@ export const Home = () => {
                       crypto?.market_data?.price_change_24h_in_currency?.usd *
                         10
                     ) / 10
-                  )} `
+                  )} ( ${crypto?.market_data?.price_change_percentage_24h?.toFixed(
+                    2
+                  )}% )`
                 : `$${formatNumberWithCommas(
                     Math.round(
                       crypto?.market_data?.price_change_24h_in_currency?.usd *
