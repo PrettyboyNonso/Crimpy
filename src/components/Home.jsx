@@ -23,24 +23,24 @@ export const Home = () => {
   }
   ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement);
 
-  const getGraphData = async (...ids) => {
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        "x-cg-demo-api-key": "CG-BFZ4VisezRhHydG8AwE61kVa",
-        mode: "no-cors",
-      },
-    };
-    const graphData = [];
-    for (const id of ids) {
-      const url = `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=30&interval=daily`;
-      const response = await fetch(url, options);
-      const data = await response.json();
-      graphData.push(data);
-    }
-    setGraphDataState(graphData);
-  };
+  // const getGraphData = async (...ids) => {
+  //   const options = {
+  //     method: "GET",
+  //     headers: {
+  //       accept: "application/json",
+  //       "x-cg-demo-api-key": "CG-BFZ4VisezRhHydG8AwE61kVa",
+  //       mode: "no-cors",
+  //     },
+  //   };
+  //   const graphData = [];
+  //   for (const id of ids) {
+  //     const url = `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=30&interval=daily`;
+  //     const response = await fetch(url, options);
+  //     const data = await response.json();
+  //     graphData.push(data);
+  //   }
+  //   setGraphDataState(graphData);
+  // };
 
   const getCrypto = async (...ids) => {
     const options = {
@@ -104,7 +104,7 @@ export const Home = () => {
 
   useEffect(() => {
     getCrypto("bitcoin", "ethereum", "binancecoin");
-    getGraphData("bitcoin", "ethereum", "binancecoin");
+    // getGraphData("bitcoin", "ethereum", "binancecoin");
   }, []);
 
   const LoadingAsset = () => {
