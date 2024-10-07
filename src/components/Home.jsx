@@ -117,7 +117,7 @@ export const Home = () => {
 
   useEffect(() => {
     getCrypto("bitcoin", "ethereum", "binancecoin");
-    getGraphData("bitcoin", "ethereum", "binancecoin");
+    // getGraphData("bitcoin", "ethereum", "binancecoin");
   }, []);
 
   const LoadingAsset = () => {
