@@ -157,9 +157,7 @@ export const Home = () => {
             </div>
           </div>
 
-          <div className="asset-graph">
-            <AssetGraph />
-          </div>
+          <div className="asset-graph">{/* <AssetGraph /> */}</div>
           <div className="asset-price">
             <h4>{`$${formatNumberWithCommas(
               crypto?.market_data?.current_price?.usd
