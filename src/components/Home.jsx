@@ -82,9 +82,9 @@ export const Home = () => {
           <div className="asset-graph">{/* <AssetGraph /> */}</div>
           <div className="asset-price">
             <h4>{`$${formatNumberWithCommas(
-              crypto?.market_data?.current_price?.usd
+              crypto?.market_data?.current_price?.usd.toFixed(2)
             )}`}</h4>
-            {/* <p>{+$180 (0.9)%}</p> */}
+
             <p
               style={{
                 color:
@@ -102,7 +102,7 @@ export const Home = () => {
                     Math.round(
                       crypto?.market_data?.price_change_24h_in_currency?.usd *
                         10
-                    ) / 10
+                    ).toFixed(1) / 10
                   )} (${crypto?.market_data?.price_change_percentage_24h?.toFixed(
                     1
                   )}%)`
@@ -110,7 +110,7 @@ export const Home = () => {
                     Math.round(
                       crypto?.market_data?.price_change_24h_in_currency?.usd *
                         10
-                    ) / 10
+                    ).toFixed(1) / 10
                   )} (${crypto?.market_data?.price_change_percentage_24h?.toFixed(
                     2
                   )}%)`}
@@ -125,7 +125,16 @@ export const Home = () => {
       <div className="balance-component">
         <div className="portfolio-balance">
           <p>portfolio balance</p>
-          <h2>$350,000.65</h2>
+          <h2>{`$${formatNumberWithCommas(
+            (
+              350000.65 +
+              parseFloat(
+                assetState[0]?.market_data?.price_change_24h_in_currency?.usd?.toFixed(
+                  1
+                ) || 0
+              )
+            ).toFixed(2)
+          )}`}</h2>
           <div className="today-profit">
             <FontAwesomeIcon
               icon={faArrowTrendUp}
@@ -135,7 +144,11 @@ export const Home = () => {
                 backgroundColor: " rgb(27, 27, 27)",
               }}
             />
-            <p>+$1,896</p>
+            <p>
+              {`$${assetState[0]?.market_data?.price_change_24h_in_currency?.usd.toFixed(
+                2
+              )}`}
+            </p>
             <p> today's profit</p>
           </div>
         </div>
