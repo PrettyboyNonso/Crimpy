@@ -228,6 +228,10 @@
     animation: LoadAssets 1s linear infinite;
   }
 
+  .loading-asset-img p {
+    width: 2.6em;
+  }
+
   .Loading-asset-name {
     display: flex;
     flex-direction: column;
@@ -241,11 +245,11 @@
   .Loading-asset-name p {
     animation: LoadAssets 1s linear infinite;
     height: 0.5em;
-    width: 60%;
+    width: 70%;
     border-radius: 5px;
   }
   .loading-asset-price {
-    flex: 0 0 20%;
+    flex: 0 0 15%;
     display: flex;
     flex-direction: column;
     gap: 0.5em;
@@ -259,7 +263,7 @@
   .loading-asset-price p {
     animation: LoadAssets 1s linear infinite;
     height: 0.5em;
-    width: 80%;
+    width: 60%;
     border-radius: 5px;
   }
   .loading-asset-graph {

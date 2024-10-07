@@ -125,7 +125,9 @@ export const Home = () => {
       <div className="assets">
         <div className="assets-div">
           <div className="assets-child">
-            <div className="asset-img loading-asset-img"></div>
+            <div className="asset-img loading-asset-img">
+              <p></p>
+            </div>
             <div className="asset-name Loading-asset-name">
               <h4></h4>
               <p></p>
