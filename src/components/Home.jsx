@@ -6,53 +6,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useEffect, useState } from "react";
-import { Line } from "react-chartjs-2";
-import {
-  Chart as ChartJS,
-  CategoryScale,
-  LinearScale,
-  PointElement,
-  LineElement,
-} from "chart.js";
+import { Footer } from "./Footer";
 
 export const Home = () => {
   const [assetState, setAssetState] = useState([]);
-  const [graphDetailsState, setGraphDetailsState] = useState([]);
+
   function formatNumberWithCommas(number) {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
-  ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement);
-
-  const getGraphData = async (...ids) => {
-    const options = {
-      method: "GET",
-      headers: {
-        accept: "application/json",
-        "x-cg-demo-api-key": "CG-BFZ4VisezRhHydG8AwE61kVa",
-      },
-    };
-    const graphData = [];
-    const overAllDataArray = [];
-    let graphDetails = {};
-    for (const id of ids) {
-      const url = `https://api.coingecko.com/api/v3/coins/${id}/market_chart?vs_currency=usd&days=10&interval=daily`;
-      const response = await fetch(url, options);
-      const data = await response.json();
-      for (let graph of data?.prices) {
-        const prices = [];
-        const timestamp = [];
-        prices.push(graph[1]);
-        timestamp.push(graph[0]);
-
-        graphDetails.labelPrice = prices;
-        graphDetails.labelTimestamp = timestamp;
-      }
-      overAllDataArray.push(graphDetails);
-    }
-
-    setGraphDetailsState(overAllDataArray);
-    console.log(overAllDataArray);
-  };
 
   const getCrypto = async (...ids) => {
     const options = {
@@ -64,60 +25,21 @@ export const Home = () => {
     };
     const assets = [];
     for (const id of ids) {
-      const url = `https://api.coingecko.com/api/v3/coins/${id}`;
-      const response = await fetch(url, options);
-      const data = await response.json();
-      assets.push(data);
+      try {
+        const url = `https://api.coingecko.com/api/v3/coins/${id}`;
+        const response = await fetch(url, options);
+        const data = await response.json();
+        assets.push(data);
+      } catch (error) {
+        console.log(error);
+      }
     }
 
     setAssetState(assets);
   };
 
-  const AssetGraph = () => {
-    const [chartData, setChartData] = useState({});
-    useEffect(() => {
-      const label = ["28th june", "29th June", "30 June", "1st July"];
-      const prices = [56000, 56802, 67000, 89000];
-      setChartData({
-        labels: label,
-        datasets: [
-          {
-            label: "Price in USD",
-            data: prices,
-            borderColor: "rgba(75, 192, 192, 1)",
-            fill: false,
-            tension: 0.4,
-          },
-        ],
-      });
-    }, []);
-
-    const chartOptions = {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        x: {
-          display: false,
-        },
-        y: {
-          display: false,
-        },
-      },
-    };
-    return (
-      <div className="asset-graph-child">
-        {Object.keys(chartData).length > 0 ? (
-          <Line data={chartData} options={chartOptions} />
-        ) : (
-          <p>Loading chart...</p>
-        )}
-      </div>
-    );
-  };
-
   useEffect(() => {
     getCrypto("bitcoin", "ethereum", "binancecoin");
-    // getGraphData("bitcoin", "ethereum", "binancecoin");
   }, []);
 
   const LoadingAsset = () => {
@@ -181,15 +103,17 @@ export const Home = () => {
                       crypto?.market_data?.price_change_24h_in_currency?.usd *
                         10
                     ) / 10
-                  )} ( ${crypto?.market_data?.price_change_percentage_24h?.toFixed(
-                    2
-                  )}% )`
-                : `$${formatNumberWithCommas(
+                  )} (${crypto?.market_data?.price_change_percentage_24h?.toFixed(
+                    1
+                  )}%)`
+                : `${formatNumberWithCommas(
                     Math.round(
                       crypto?.market_data?.price_change_24h_in_currency?.usd *
                         10
                     ) / 10
-                  )}`}
+                  )} (${crypto?.market_data?.price_change_percentage_24h?.toFixed(
+                    2
+                  )}%)`}
             </p>
           </div>
         </div>
@@ -205,7 +129,11 @@ export const Home = () => {
           <div className="today-profit">
             <FontAwesomeIcon
               icon={faArrowTrendUp}
-              style={{ color: "green", fontSize: "18px" }}
+              style={{
+                color: "green",
+                fontSize: "18px",
+                backgroundColor: " rgb(27, 27, 27)",
+              }}
             />
             <b>+$1,896</b>
             <p> today's profit</p>
@@ -215,7 +143,11 @@ export const Home = () => {
           <div className="withdraw-icon">
             <FontAwesomeIcon
               icon={faRightLeft}
-              style={{ color: "white", fontSize: "18px" }}
+              style={{
+                color: "white",
+                fontSize: "18px",
+                backgroundColor: "rgb(56, 56, 56)",
+              }}
             />
             <p>withdraw</p>
           </div>
@@ -223,7 +155,11 @@ export const Home = () => {
           <div className="withdraw-icon">
             <FontAwesomeIcon
               icon={faChartBar}
-              style={{ color: "white", fontSize: "18px" }}
+              style={{
+                color: "white",
+                fontSize: "18px",
+                backgroundColor: "rgb(56, 56, 56)",
+              }}
             />
             <p>market</p>
           </div>
@@ -255,32 +191,35 @@ export const Home = () => {
 
   // Conditional rendering based on screen size
   return isSmallDevice ? (
-    <div className="home">
-      <div className="header-app">
-        <div className="first-head-flex">
-          <p>hello, Jessica WD!</p>
-          <h3>welcome to crimpy</h3>
+    <>
+      <div className="home">
+        <div className="header-app">
+          <div className="first-head-flex">
+            <p>hello, Jessica WD!</p>
+            <h3>welcome to crimpy</h3>
+          </div>
+          <div className="bell-icon">
+            <FontAwesomeIcon icon={faBell} style={{ fontSize: "20px" }} />
+          </div>
         </div>
-        <div className="bell-icon">
-          <FontAwesomeIcon icon={faBell} style={{ fontSize: "20px" }} />
+        <BalanceComponent />
+        <div className="assets-head">
+          <h3>assets</h3>
+        </div>
+        <div className="asset-flex-div">
+          {assetState.length === 0 ? (
+            <>
+              <LoadingAsset />
+              <LoadingAsset />
+              <LoadingAsset />
+            </>
+          ) : (
+            assetState?.map((value, index) => <Assest crypto={value} />)
+          )}
         </div>
       </div>
-      <BalanceComponent />
-      <div className="assets-head">
-        <h3>assets</h3>
-      </div>
-      <div className="asset-flex-div">
-        {assetState.length === 0 ? (
-          <>
-            <LoadingAsset />
-            <LoadingAsset />
-            <LoadingAsset />
-          </>
-        ) : (
-          assetState?.map((value, index) => <Assest crypto={value} />)
-        )}
-      </div>
-    </div>
+      <Footer />
+    </>
   ) : (
     <div className="smaller-device">
       <h1>Oops! This website can only be accessed on a mobile phone</h1>

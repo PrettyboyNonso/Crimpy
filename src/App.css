@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: rgb(243, 243, 243);
 }
 .smaller-device {
   width: 100%;
@@ -67,12 +68,16 @@
     border-radius: 10px;
     background-color: rgb(27, 27, 27);
   }
+  .portfolio-balance {
+    background-color: rgb(27, 27, 27);
+  }
 
   .portfolio-balance p {
     color: white;
     text-transform: capitalize;
     font-family: "Karla", sans-serif;
     font-size: 13px;
+    background-color: rgb(27, 27, 27);
   }
   .portfolio-balance h2 {
     color: white;
@@ -80,6 +85,7 @@
     text-transform: capitalize;
     font-family: "Karla", sans-serif;
     font-size: 22px;
+    background-color: rgb(27, 27, 27);
   }
 
   .today-profit {
@@ -87,12 +93,14 @@
     display: flex;
     align-items: center;
     gap: 0.5em;
+    background-color: rgb(27, 27, 27);
   }
 
   .today-profit b {
     color: white;
     font-family: "Karla", sans-serif;
     font-weight: 300;
+    background-color: rgb(27, 27, 27);
   }
 
   .today-profit p {
@@ -116,7 +124,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    border-radius: 30px;
     gap: 0.3em;
+    background-color: rgb(56, 56, 56);
   }
 
   .withdraw-icon p {
@@ -125,6 +135,7 @@
     font-weight: lighter;
     font-size: 13px;
     text-transform: capitalize;
+    background-color: rgb(56, 56, 56);
   }
 
   .assets-head h3 {
@@ -270,5 +281,59 @@
     animation: LoadAssets 1s linear infinite;
     height: 3em;
     border-radius: 5px;
+  }
+
+  footer {
+    display: flex;
+    border: 1px solid rgb(233, 233, 233);
+    width: 100%;
+    position: fixed;
+    bottom: 0em;
+    padding: 0.6em 0em;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
+    align-items: center;
+    background-color: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  .footer-icon {
+    flex: 0 0 20%;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+  }
+
+  .active {
+    width: 1.8em;
+    height: 1.8em;
+    color: #002244;
+  }
+
+  .homeBtn {
+    width: 1.8em;
+    height: 1.8em;
+    color: rgb(133, 133, 133);
+    background-color: white;
+  }
+
+  .middleBtnDiv {
+    margin-top: -3em;
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    /* border-bottom-left-radius: 25px;
+    border-bottom-right-radius: 25px; */
+    border-radius: 50%;
+    background-color: rgb(243, 243, 243);
+  }
+
+  .middleBtn {
+    width: 3em;
+    height: 3em;
+    padding: 0.4em 0.3em;
+
+    border-radius: 50%;
+    background-color: black;
+    color: white;
   }
 }
