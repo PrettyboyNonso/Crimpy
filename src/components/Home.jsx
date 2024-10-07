@@ -135,7 +135,7 @@ export const Home = () => {
                 backgroundColor: " rgb(27, 27, 27)",
               }}
             />
-            <b>+$1,896</b>
+            <p>+$1,896</p>
             <p> today's profit</p>
           </div>
         </div>

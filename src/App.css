@@ -96,16 +96,18 @@
     background-color: rgb(27, 27, 27);
   }
 
-  .today-profit b {
-    color: white;
+  .today-profit :nth-child(2) {
     font-family: "Karla", sans-serif;
-    font-weight: 300;
+    font-size: 13px;
+    color: white;
     background-color: rgb(27, 27, 27);
   }
-
-  .today-profit p {
-    color: rgb(112, 112, 112);
+  .today-profit :nth-child(3) {
+    font-family: "Karla", sans-serif;
     font-size: 13px;
+    color: rgb(124, 124, 124);
+    font-weight: bold;
+    background-color: rgb(27, 27, 27);
   }
 
   .withdraw-part {
@@ -137,7 +139,10 @@
     text-transform: capitalize;
     background-color: rgb(56, 56, 56);
   }
-
+  .assets {
+    border-bottom: 1px solid rgb(248, 248, 248);
+    padding-bottom: 0.3em;
+  }
   .assets-head h3 {
     font-family: "Karla", sans-serif;
     text-transform: capitalize;
