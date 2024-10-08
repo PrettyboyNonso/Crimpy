@@ -313,7 +313,9 @@
   .footer-icon p {
     font-family: "Karla", sans-serif;
     text-transform: capitalize;
-    font-size: 13px;
+    font-size: 12px;
+    background-color: white;
+    font-weight: bold;
   }
 
   .active {
