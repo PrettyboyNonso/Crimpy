@@ -305,8 +305,15 @@
   .footer-icon {
     flex: 0 0 20%;
     display: flex;
-    justify-content: center;
+    align-items: center;
     background-color: white;
+    flex-direction: column;
+    gap: 0.2em;
+  }
+  .footer-icon p {
+    font-family: "Karla", sans-serif;
+    text-transform: capitalize;
+    font-size: 13px;
   }
 
   .active {

@@ -11,18 +11,22 @@ export const Footer = () => {
     <footer>
       <div className="footer-icon">
         <HomeIcon className=" active" />
+        <p>home</p>
       </div>
       <div className="footer-icon">
         <ChartBarIcon className="homeBtn" />
+        <p>statistics</p>
       </div>
       <div className="footer-icon middleBtnDiv">
         <ArrowsRightLeftIcon className="middleBtn" />
       </div>
       <div className="footer-icon">
         <PresentationChartLineIcon className="homeBtn" />
+        <p>market</p>
       </div>
       <div className="footer-icon">
         <Cog6ToothIcon className="homeBtn" />
+        <p>settings</p>
       </div>
     </footer>
   );
