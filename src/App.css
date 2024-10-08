@@ -310,14 +310,15 @@
   }
 
   .active {
-    width: 1.8em;
-    height: 1.8em;
+    width: 1.6em;
+    height: 1.6em;
     color: #002244;
+    background-color: white;
   }
 
   .homeBtn {
-    width: 1.8em;
-    height: 1.8em;
+    width: 1.6em;
+    height: 1.6em;
     color: rgb(133, 133, 133);
     background-color: white;
   }
@@ -333,8 +334,8 @@
   }
 
   .middleBtn {
-    width: 3em;
-    height: 3em;
+    width: 2.5em;
+    height: 2.5em;
     padding: 0.4em 0.3em;
 
     border-radius: 50%;

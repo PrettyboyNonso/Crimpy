@@ -65,6 +65,16 @@ export const Home = () => {
       </div>
     );
   };
+
+  function prependDollarSign(number) {
+    let arr = [];
+    arr.push(number?.toFixed(1)?.toString()?.split(""));
+    const newArr = arr.flat(1);
+    newArr.splice(1, 0, "$");
+    const lastArr = newArr.join("");
+    return lastArr;
+  }
+
   const Assest = ({ crypto }) => {
     return (
       <div className="assets">
@@ -82,7 +92,7 @@ export const Home = () => {
           <div className="asset-graph">{/* <AssetGraph /> */}</div>
           <div className="asset-price">
             <h4>{`$${formatNumberWithCommas(
-              crypto?.market_data?.current_price?.usd.toFixed(2)
+              crypto?.market_data?.current_price?.usd.toFixed(1)
             )}`}</h4>
 
             <p
@@ -98,19 +108,13 @@ export const Home = () => {
               ) /
                 10 >
               0
-                ? `+$${formatNumberWithCommas(
-                    Math.round(
-                      crypto?.market_data?.price_change_24h_in_currency?.usd *
-                        10
-                    ).toFixed(1) / 10
+                ? `+$${crypto?.market_data?.price_change_24h_in_currency?.usd.toFixed(
+                    1
                   )} (${crypto?.market_data?.price_change_percentage_24h?.toFixed(
                     1
                   )}%)`
-                : `${formatNumberWithCommas(
-                    Math.round(
-                      crypto?.market_data?.price_change_24h_in_currency?.usd *
-                        10
-                    ).toFixed(1) / 10
+                : `${prependDollarSign(
+                    crypto?.market_data?.price_change_24h_in_currency?.usd
                   )} (${crypto?.market_data?.price_change_percentage_24h?.toFixed(
                     2
                   )}%)`}
@@ -145,9 +149,12 @@ export const Home = () => {
               }}
             />
             <p>
-              {`$${assetState[0]?.market_data?.price_change_24h_in_currency?.usd.toFixed(
-                2
-              )}`}
+              {assetState[0]?.market_data?.price_change_24h_in_currency?.usd > 0
+                ? `$${assetState[0]?.market_data?.price_change_24h_in_currency?.usd}`
+                : `${prependDollarSign(
+                    assetState[0]?.market_data?.price_change_24h_in_currency
+                      ?.usd
+                  )}`}
             </p>
             <p> today's profit</p>
           </div>
