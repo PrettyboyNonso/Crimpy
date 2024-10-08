@@ -1,5 +1,6 @@
 import { faBell, faChartBar } from "@fortawesome/free-regular-svg-icons";
 import {
+  faArrowTrendDown,
   faArrowTrendUp,
   faRightLeft,
   faShop,
@@ -141,9 +142,19 @@ export const Home = () => {
           )}`}</h2>
           <div className="today-profit">
             <FontAwesomeIcon
-              icon={faArrowTrendUp}
+              icon={
+                assetState[0]?.market_data?.price_change_24h_in_currency?.usd >
+                0
+                  ? faArrowTrendUp
+                  : faArrowTrendDown
+              }
               style={{
-                color: "green",
+                color: `${
+                  assetState[0]?.market_data?.price_change_24h_in_currency
+                    ?.usd > 0
+                    ? "green"
+                    : "red"
+                }`,
                 fontSize: "18px",
                 backgroundColor: " rgb(27, 27, 27)",
               }}
