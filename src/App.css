@@ -308,7 +308,7 @@
     align-items: center;
     background-color: white;
     flex-direction: column;
-    gap: 0.2em;
+    gap: 0.3em;
   }
   .footer-icon p {
     font-family: "Karla", sans-serif;
