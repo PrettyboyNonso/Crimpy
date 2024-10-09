@@ -351,4 +351,70 @@
     background-color: black;
     color: white;
   }
+
+  /* market page */
+
+  .market {
+    margin-top: 2em;
+    padding-left: 1em;
+    padding-right: 1em;
+  }
+
+  .market-head {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .first-market-head {
+    flex: 0 0 70%;
+  }
+
+  .first-market-head h3 {
+    font-size: 16px;
+    text-transform: capitalize;
+    font-family: "Karla", sans-serif;
+    font-weight: bold;
+  }
+
+  .first-market-head p {
+    font-size: 13px;
+    text-transform: capitalize;
+    font-family: "Karla", sans-serif;
+  }
+
+  .market-details {
+    width: 100%;
+    height: 9.5em;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .market-det {
+    flex: 0 0 31%;
+
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5em;
+  }
+
+  .market-det p {
+    font-size: 13px;
+    text-transform: capitalize;
+    font-family: "Karla", sans-serif;
+  }
+
+  .market-det h3 {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: "Karla", sans-serif;
+  }
 }
