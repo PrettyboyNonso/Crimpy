@@ -46,6 +46,10 @@ export const Market = ({
   useEffect(() => {
     getGlobalMarket();
   }, []);
+
+  const LoadingMarket = () => {
+    return <div className="loading-market"></div>;
+  };
   const LoadingAsset = () => {
     return (
       <div className="assets">
@@ -84,29 +88,49 @@ export const Market = ({
         <div className="market-details">
           <div className="market-det">
             <p>vol. (24 hours):</p>
-            <h3>{`${shortenNumber(dataState?.data?.total_volume.usd)}`}</h3>
+            {dataState ? (
+              <h3>{`${shortenNumber(dataState?.data?.total_volume.usd)}`}</h3>
+            ) : (
+              <LoadingMarket />
+            )}
           </div>
           <div className="market-det">
             <p>total cap:</p>
-            <h3>{`${shortenNumber(
-              dataState?.data?.total_market_cap?.usd
-            )}`}</h3>
+            {dataState ? (
+              <h3>{`${shortenNumber(
+                dataState?.data?.total_market_cap?.usd
+              )}`}</h3>
+            ) : (
+              <LoadingMarket />
+            )}
           </div>
           <div className="market-det">
             <p>total currency:</p>
-            <h3>{dataState && dataState?.data?.active_cryptocurrencies}</h3>
+            {dataState ? (
+              <h3>{dataState?.data?.active_cryptocurrencies}</h3>
+            ) : (
+              <LoadingMarket />
+            )}
           </div>
           <div className="market-det">
             <p>dom currency:</p>
-            <h3>{`BTC: ${dataState?.data?.market_cap_percentage?.btc.toFixed(
-              2
-            )}`}</h3>
+            {dataState ? (
+              <h3>{`BTC: ${dataState?.data?.market_cap_percentage?.btc.toFixed(
+                2
+              )}`}</h3>
+            ) : (
+              <LoadingMarket />
+            )}
           </div>
           <div className="market-det">
             <p style={{ height: "1.2em" }}></p>
-            <h3>{`ETH: ${dataState?.data?.market_cap_percentage?.eth.toFixed(
-              2
-            )}`}</h3>
+            {dataState ? (
+              <h3>{`ETH: ${dataState?.data?.market_cap_percentage?.eth.toFixed(
+                2
+              )}`}</h3>
+            ) : (
+              <LoadingMarket />
+            )}
           </div>
           <div className="market-det">
             <p style={{ height: "1.2em" }}></p>
