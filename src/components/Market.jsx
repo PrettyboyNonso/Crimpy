@@ -24,7 +24,6 @@ export const Market = ({
       const response = await fetch(url, options);
       const data = await response.json();
       setDataState(data);
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
@@ -40,7 +39,7 @@ export const Market = ({
     } else if (value >= 1e3) {
       return `$${(value / 1e3).toFixed(3)}K`; // Thousands
     } else {
-      return `$${value.toLocaleString()}`; // Below 1000, format with commas
+      return `$${value?.toLocaleString()}`; // Below 1000, format with commas
     }
   }
 
