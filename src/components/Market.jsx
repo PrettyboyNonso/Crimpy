@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Footer } from "./Footer";
 import { faBell } from "@fortawesome/free-regular-svg-icons";
 import { Asset } from "./Assets";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { InformationCircleIcon } from "@heroicons/react/24/solid";
 
 export const Market = ({
@@ -10,6 +10,7 @@ export const Market = ({
   prependDollarSign,
   formatNumberWithCommas,
 }) => {
+  const [dataState, setDataState] = useState();
   const getGlobalMarket = async () => {
     const options = {
       method: "GET",
@@ -22,11 +23,26 @@ export const Market = ({
       const url = "https://api.coingecko.com/api/v3/global";
       const response = await fetch(url, options);
       const data = await response.json();
+      setDataState(data);
       console.log(data);
     } catch (error) {
       console.log(error);
     }
   };
+
+  function shortenNumber(value) {
+    if (value >= 1e12) {
+      return `$${(value / 1e12).toFixed(3)}T`; // Trillions
+    } else if (value >= 1e9) {
+      return `$${(value / 1e9).toFixed(3)}B`; // Billions
+    } else if (value >= 1e6) {
+      return `$${(value / 1e6).toFixed(3)}M`; // Millions
+    } else if (value >= 1e3) {
+      return `$${(value / 1e3).toFixed(3)}K`; // Thousands
+    } else {
+      return `$${value.toLocaleString()}`; // Below 1000, format with commas
+    }
+  }
 
   useEffect(() => {
     getGlobalMarket();
@@ -69,23 +85,29 @@ export const Market = ({
         <div className="market-details">
           <div className="market-det">
             <p>vol. (24 hours):</p>
-            <h3>$14,58B</h3>
+            <h3>{`${shortenNumber(dataState?.data?.total_volume.usd)}`}</h3>
           </div>
           <div className="market-det">
             <p>total cap:</p>
-            <h3>$1,051T</h3>
+            <h3>{`${shortenNumber(
+              dataState?.data?.total_market_cap?.usd
+            )}`}</h3>
           </div>
           <div className="market-det">
             <p>total currency:</p>
-            <h3>9243</h3>
+            <h3>{dataState && dataState?.data?.active_cryptocurrencies}</h3>
           </div>
           <div className="market-det">
             <p>dom currency:</p>
-            <h3>BTC: 54.5%</h3>
+            <h3>{`BTC: ${dataState?.data?.market_cap_percentage?.btc.toFixed(
+              2
+            )}`}</h3>
           </div>
           <div className="market-det">
             <p style={{ height: "1.2em" }}></p>
-            <h3>ETH: 12.6%</h3>
+            <h3>{`ETH: ${dataState?.data?.market_cap_percentage?.eth.toFixed(
+              2
+            )}`}</h3>
           </div>
           <div className="market-det">
             <p style={{ height: "1.2em" }}></p>
