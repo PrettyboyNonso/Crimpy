@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./App.css";
 import { Home } from "./components/Home";
 import { Market } from "./components/Market";
+import { Payment } from "./components/Payment";
 
 function App() {
   const [assetState, setAssetState] = useState([]);
@@ -51,7 +52,13 @@ function App() {
         prependDollarSign={prependDollarSign}
         formatNumberWithCommas={formatNumberWithCommas}
       /> */}
-      <Market
+      {/* <Market
+        assetState={assetState}
+        prependDollarSign={prependDollarSign}
+        formatNumberWithCommas={formatNumberWithCommas}
+      /> */}
+
+      <Payment
         assetState={assetState}
         prependDollarSign={prependDollarSign}
         formatNumberWithCommas={formatNumberWithCommas}

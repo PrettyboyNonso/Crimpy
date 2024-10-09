@@ -117,7 +117,7 @@ export const Market = ({
             {dataState ? (
               <h3>{`BTC: ${dataState?.data?.market_cap_percentage?.btc.toFixed(
                 2
-              )}`}</h3>
+              )}%`}</h3>
             ) : (
               <LoadingMarket />
             )}
@@ -127,7 +127,7 @@ export const Market = ({
             {dataState ? (
               <h3>{`ETH: ${dataState?.data?.market_cap_percentage?.eth.toFixed(
                 2
-              )}`}</h3>
+              )}%`}</h3>
             ) : (
               <LoadingMarket />
             )}
