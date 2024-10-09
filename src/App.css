@@ -394,27 +394,30 @@
     align-items: center;
     justify-content: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    background-color: rgb(236, 236, 236);
   }
 
   .market-det {
     flex: 0 0 31%;
-
     width: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;
     gap: 0.5em;
+    background-color: rgb(236, 236, 236);
   }
 
   .market-det p {
     font-size: 13px;
     text-transform: capitalize;
     font-family: "Karla", sans-serif;
+    background-color: rgb(236, 236, 236);
   }
 
   .market-det h3 {
     font-size: 16px;
     text-transform: uppercase;
     font-family: "Karla", sans-serif;
+    background-color: rgb(236, 236, 236);
   }
 }

@@ -4,6 +4,7 @@ import {
   Cog6ToothIcon,
   PresentationChartLineIcon,
 } from "@heroicons/react/16/solid";
+import { ChartPieIcon } from "@heroicons/react/24/solid";
 import { BanknotesIcon } from "@heroicons/react/24/solid";
 import { HomeIcon } from "@heroicons/react/24/solid";
 
@@ -22,7 +23,7 @@ export const Footer = () => {
         <ArrowsRightLeftIcon className="middleBtn" />
       </div>
       <div className="footer-icon">
-        <PresentationChartLineIcon className="homeBtn" />
+        <ChartPieIcon className="homeBtn" />
         <p>market</p>
       </div>
       <div className="footer-icon">
