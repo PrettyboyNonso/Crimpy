@@ -14,8 +14,9 @@ export const Payment = ({
           className="header-app"
           style={{ paddingLeft: "1em", paddingRight: "1em" }}
         >
-          <div className="first-head-flex">
-            <h3 style={{ fontSize: "18px" }}> transactions</h3>
+          <div className="paymenent-first-head">
+            <div className="image-div-payment"></div>
+            <h3> Jessica WD!</h3>
           </div>
           <div className="bell-icon">
             <FontAwesomeIcon icon={faBell} style={{ fontSize: "20px" }} />
