@@ -15,7 +15,12 @@ export const Payment = ({
           style={{ paddingLeft: "1em", paddingRight: "1em" }}
         >
           <div className="paymenent-first-head">
-            <div className="image-div-payment"></div>
+            <div className="image-div-payment">
+              <img
+                src="/966-9665317_placeholder-image-person-jpg-removebg-preview.png"
+                alt="user-picture"
+              />
+            </div>
             <h3> Jessica WD!</h3>
           </div>
           <div className="bell-icon">

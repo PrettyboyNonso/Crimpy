@@ -450,13 +450,21 @@
   .paymenent-first-head {
     display: flex;
     align-items: center;
-    gap: 1em;
+    gap: 0.6em;
   }
 
   .image-div-payment {
-    width: 2.5em;
-    height: 2.5em;
-    border: 1px solid black;
+    width: 2.3em;
+    height: 2.3em;
+    border-radius: 50%;
+
+    border: 1px solid rgb(161, 161, 161);
+  }
+
+  .image-div-payment img {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
     border-radius: 50%;
   }
 
@@ -483,7 +491,7 @@
   }
 
   .payment-balance {
-    margin-top: 1em;
+    margin-top: 1.5em;
     padding-left: 1em;
     padding-right: 1em;
   }
