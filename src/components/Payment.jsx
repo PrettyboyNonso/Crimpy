@@ -16,34 +16,24 @@ export const Payment = ({
           className="header-app"
           style={{ paddingLeft: "1em", paddingRight: "1em" }}
         >
-          {/* <div className="paymenent-first-head">
-            <div className="image-div-payment">
-              <img
-                src="/966-9665317_placeholder-image-person-jpg-removebg-preview.png"
-                alt="user-picture"
-              />
-            </div>
-            <h3> Jessica WD!</h3>
-          </div> */}
           <h3
             style={{
               textTransform: "capitalize",
               fontFamily: " Karla, sans-serif",
             }}
           >
-            {" "}
             transactions
           </h3>
           <div
             className="bell-icon"
-            style={{ display: "flex", alignItems: "center", gap: "1.5em" }}
+            // style={{ display: "flex", alignItems: "center", gap: "1.5em" }}
           >
-            <FontAwesomeIcon icon={faGear} style={{ fontSize: "20px" }} />
+            {/* <FontAwesomeIcon icon={faGear} style={{ fontSize: "20px" }} /> */}
             <FontAwesomeIcon icon={faBell} style={{ fontSize: "20px" }} />
           </div>
         </div>
         <div className="payment-balance">
-          <p>available balance</p>
+          <p>portfolio balance</p>
           <h3>{`$${formatNumberWithCommas(
             (
               350000.65 +
@@ -63,7 +53,7 @@ export const Payment = ({
           <div className="loader-div">
             <div className="inner-loader-div"></div>
           </div>
-          <p style={{ color: "green" }}>spent $0.00</p>
+          <p>spent $0.00</p>
         </div>
         <div className="buttons-pay">
           <button>withdraw</button>
