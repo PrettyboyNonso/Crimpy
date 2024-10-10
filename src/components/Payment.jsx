@@ -1,6 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell } from "@fortawesome/free-regular-svg-icons";
 import { Footer } from "./Footer";
+import { faGear } from "@fortawesome/free-solid-svg-icons/faGear";
+import { CurrencyDollarIcon } from "@heroicons/react/20/solid";
 
 export const Payment = ({
   assetState,
@@ -14,7 +16,7 @@ export const Payment = ({
           className="header-app"
           style={{ paddingLeft: "1em", paddingRight: "1em" }}
         >
-          <div className="paymenent-first-head">
+          {/* <div className="paymenent-first-head">
             <div className="image-div-payment">
               <img
                 src="/966-9665317_placeholder-image-person-jpg-removebg-preview.png"
@@ -22,8 +24,21 @@ export const Payment = ({
               />
             </div>
             <h3> Jessica WD!</h3>
-          </div>
-          <div className="bell-icon">
+          </div> */}
+          <h3
+            style={{
+              textTransform: "capitalize",
+              fontFamily: " Karla, sans-serif",
+            }}
+          >
+            {" "}
+            transactions
+          </h3>
+          <div
+            className="bell-icon"
+            style={{ display: "flex", alignItems: "center", gap: "1.5em" }}
+          >
+            <FontAwesomeIcon icon={faGear} style={{ fontSize: "20px" }} />
             <FontAwesomeIcon icon={faBell} style={{ fontSize: "20px" }} />
           </div>
         </div>
@@ -48,7 +63,7 @@ export const Payment = ({
           <div className="loader-div">
             <div className="inner-loader-div"></div>
           </div>
-          <p>spent $0.00</p>
+          <p style={{ color: "green" }}>spent $0.00</p>
         </div>
         <div className="buttons-pay">
           <button>withdraw</button>
