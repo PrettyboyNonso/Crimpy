@@ -537,7 +537,7 @@
   }
 
   .inner-loader-div {
-    width: 40%;
+    width: 10%;
     background-color: green;
     height: 100%;
     border-top-left-radius: 10px;
@@ -577,19 +577,73 @@
     margin-top: 2em;
     background-color: whitesmoke;
     width: 100%;
-    /* border: 1px solid rgb(227, 227, 227); */
-    /* box-shadow: 0 6px 10px rgba(0, 0, 0, 0.8); */
-    /* flex-grow: 1; */
-    /* border-radius: 18px; */
+
     padding: 0em 1em;
   }
 
   .operations-head {
     margin-top: 1em;
+    margin-bottom: 2em;
   }
 
   .operations-head h4 {
     text-transform: capitalize;
     font-family: "Karla", sans-serif;
+  }
+
+  .transfer-component {
+    width: 100%;
+    height: 100%;
+    /* padding: 0.5em 0.3em; */
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  .senderInitials {
+    flex: 0 0 14%;
+    height: 3em;
+    /* border: 1px solid gray; */
+    border-radius: 50%;
+    background-color: skyblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .senderInitials h3 {
+    background-color: skyblue;
+    color: white;
+    font-family: "Karla", sans-serif;
+    text-transform: uppercase;
+  }
+
+  .payment-description {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2em;
+    flex: 0 0 60%;
+  }
+
+  .payment-description h4 {
+    font-family: "Karla", sans-serif;
+    text-transform: capitalize;
+  }
+
+  .payment-description p {
+    font-family: "Karla", sans-serif;
+    text-transform: capitalize;
+    font-size: 13px;
+  }
+
+  .amount-paid {
+    flex: 0 0 18%;
+  }
+
+  .amount-paid h4 {
+    font-family: "Karla", sans-serif;
+    text-transform: capitalize;
+    color: green;
+    font-size: 15px;
   }
 }
