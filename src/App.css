@@ -528,7 +528,7 @@
   }
 
   .loader-div {
-    margin-top: 0.7em;
+    margin-top: 0.9em;
     width: 100%;
     border-radius: 10px;
     height: 0.15em;
@@ -545,7 +545,7 @@
   }
 
   .transer-limit p {
-    margin-top: 0.5em;
+    margin-top: 0.7em;
     text-transform: capitalize;
     font-family: "Karla", sans-serif;
     font-size: 13px;
