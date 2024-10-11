@@ -28,10 +28,7 @@ export const Payment = ({
   return (
     <>
       <div className="payment">
-        <div
-          className="header-app"
-          style={{ paddingLeft: "1em", paddingRight: "1em" }}
-        >
+        <div className="header-app">
           <h3
             style={{
               textTransform: "capitalize",

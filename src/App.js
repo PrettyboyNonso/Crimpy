@@ -1,11 +1,13 @@
-import { useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import "./App.css";
 import { Home } from "./components/Home";
 import { Market } from "./components/Market";
 import { Payment } from "./components/Payment";
-
+import { Transfer } from "./components/Transfer";
+export const Mycontext = createContext(null);
 function App() {
   const [assetState, setAssetState] = useState([]);
+  const [transferOpen, setTransferOpen] = useState(false);
   const getCrypto = async (...ids) => {
     const options = {
       method: "GET",
@@ -45,25 +47,30 @@ function App() {
   useEffect(() => {
     getCrypto("bitcoin", "ethereum", "binancecoin");
   }, []);
-  return (
-    <div className="App">
-      {/* <Home
-        assetState={assetState}
-        prependDollarSign={prependDollarSign}
-        formatNumberWithCommas={formatNumberWithCommas}
-      /> */}
-      {/* <Market
-        assetState={assetState}
-        prependDollarSign={prependDollarSign}
-        formatNumberWithCommas={formatNumberWithCommas}
-      /> */}
 
+  return (
+    <Mycontext.Provider value={{ transferOpen, setTransferOpen }}>
+      <div className="App">
+        <Transfer />
+        <Home
+          assetState={assetState}
+          prependDollarSign={prependDollarSign}
+          formatNumberWithCommas={formatNumberWithCommas}
+        />
+
+        {/* <Market
+        assetState={assetState}
+        prependDollarSign={prependDollarSign}
+        formatNumberWithCommas={formatNumberWithCommas}
+      /> */}
+        {/* 
       <Payment
         assetState={assetState}
         prependDollarSign={prependDollarSign}
         formatNumberWithCommas={formatNumberWithCommas}
-      />
-    </div>
+      /> */}
+      </div>
+    </Mycontext.Provider>
   );
 }
 
