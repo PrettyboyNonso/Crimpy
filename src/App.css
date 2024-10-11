@@ -678,8 +678,8 @@
     width: 100%;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
-    padding-left: 0.5em;
-    padding-right: 0.5em;
+    padding-left: 1em;
+    padding-right: 1em;
     display: flex;
     margin-top: 0.8em;
     gap: 1.5em;
@@ -714,5 +714,36 @@
     width: 0.4em;
     border-radius: 50%;
     background-color: rgb(141, 141, 141);
+  }
+
+  .input-non-clickable {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  .input-non-clickable input {
+    width: 90%;
+    /* height: 3.2em; */
+    border: none;
+    border-radius: 10px;
+    padding: 0.5em 0.8em;
+    font-family: "Karla", sans-serif;
+    text-transform: capitalize;
+    font-size: 22px;
+    font-weight: bolder;
+    background-color: rgba(161, 161, 161, 0.3);
+    box-shadow: none;
+  }
+
+  .input-non-clickable p {
+    width: 90%;
+    font-family: "Karla", sans-serif;
+    text-transform: capitalize;
+    font-size: 14px;
+    letter-spacing: 0.1em;
   }
 }

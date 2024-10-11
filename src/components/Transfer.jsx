@@ -19,7 +19,10 @@ export const Transfer = () => {
         </div>
       </div>
       <div className="input-non-clickable">
-        <input type="text" disabled />
+        <input type="text" disabled value="$ 900" />
+        <p>
+          available balance : <b>$350,000</b>
+        </p>
       </div>
     </div>
   );
