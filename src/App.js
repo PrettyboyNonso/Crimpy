@@ -4,10 +4,12 @@ import { Home } from "./components/Home";
 import { Market } from "./components/Market";
 import { Payment } from "./components/Payment";
 import { Transfer } from "./components/Transfer";
+import { Parent } from "./components/Parent";
 export const Mycontext = createContext(null);
 function App() {
   const [assetState, setAssetState] = useState([]);
   const [transferOpen, setTransferOpen] = useState(false);
+  const [activComponentId, setActiveComponentId] = useState("home");
   const getCrypto = async (...ids) => {
     const options = {
       method: "GET",
@@ -49,26 +51,20 @@ function App() {
   }, []);
 
   return (
-    <Mycontext.Provider value={{ transferOpen, setTransferOpen }}>
+    <Mycontext.Provider
+      value={{
+        transferOpen,
+        setTransferOpen,
+        assetState,
+        prependDollarSign,
+        formatNumberWithCommas,
+        activComponentId,
+        setActiveComponentId,
+      }}
+    >
       <div className="App">
         <Transfer />
-        <Home
-          assetState={assetState}
-          prependDollarSign={prependDollarSign}
-          formatNumberWithCommas={formatNumberWithCommas}
-        />
-
-        {/* <Market
-        assetState={assetState}
-        prependDollarSign={prependDollarSign}
-        formatNumberWithCommas={formatNumberWithCommas}
-      /> */}
-        {/* 
-      <Payment
-        assetState={assetState}
-        prependDollarSign={prependDollarSign}
-        formatNumberWithCommas={formatNumberWithCommas}
-      /> */}
+        <Parent />
       </div>
     </Mycontext.Provider>
   );

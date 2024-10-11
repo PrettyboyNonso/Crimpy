@@ -1,14 +1,11 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell } from "@fortawesome/free-regular-svg-icons";
 import { Footer } from "./Footer";
-import { faGear } from "@fortawesome/free-solid-svg-icons/faGear";
-import { CurrencyDollarIcon } from "@heroicons/react/20/solid";
+import { useContext } from "react";
+import { Mycontext } from "../App";
 
-export const Payment = ({
-  assetState,
-  prependDollarSign,
-  formatNumberWithCommas,
-}) => {
+export const Payment = () => {
+  const { assetState, formatNumberWithCommas } = useContext(Mycontext);
   const TransferComponent = () => {
     return (
       <div className="transfer-component">

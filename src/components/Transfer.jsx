@@ -1,14 +1,28 @@
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useContext } from "react";
+import { Mycontext } from "../App";
 
 export const Transfer = () => {
+  const { transferOpen, setTransferOpen } = useContext(Mycontext);
   return (
-    <div className="transfer-compo">
+    <div
+      className="transfer-compo"
+      style={{
+        minHeight: transferOpen ? "27em" : "0em",
+        maxHeight: transferOpen ? "fit-content" : "0em",
+        paddingBottom: transferOpen ? "1em" : "0em",
+      }}
+    >
       <div className="transfer-first-head">
         <div className="swipe-down"></div>
       </div>
       <div className="transfer-head-part">
-        <FontAwesomeIcon icon={faArrowLeft} style={{ fontSize: "22px" }} />
+        <FontAwesomeIcon
+          icon={faArrowLeft}
+          style={{ fontSize: "22px" }}
+          onClick={() => setTransferOpen(false)}
+        />
         <div className="account-details">
           <h4>jessica wisconsin</h4>
           <div className="other-account-info">

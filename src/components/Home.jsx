@@ -3,18 +3,21 @@ import {
   faArrowTrendDown,
   faArrowTrendUp,
   faRightLeft,
-  faShop,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Footer } from "./Footer";
 import { Asset } from "./Assets";
+import { Mycontext } from "../App";
 
-export const Home = ({
-  assetState,
-  prependDollarSign,
-  formatNumberWithCommas,
-}) => {
+export const Home = () => {
+  const {
+    assetState,
+    prependDollarSign,
+    formatNumberWithCommas,
+    setTransferOpen,
+    setActiveComponentId,
+  } = useContext(Mycontext);
   const LoadingAsset = () => {
     return (
       <div className="assets">
@@ -85,7 +88,7 @@ export const Home = ({
           </div>
         </div>
         <div className="withdraw-part">
-          <div className="withdraw-icon">
+          <div className="withdraw-icon" onClick={() => setTransferOpen(true)}>
             <FontAwesomeIcon
               icon={faRightLeft}
               style={{
@@ -97,7 +100,10 @@ export const Home = ({
             <p>withdraw</p>
           </div>
 
-          <div className="withdraw-icon">
+          <div
+            className="withdraw-icon"
+            onClick={() => setActiveComponentId("market")}
+          >
             <FontAwesomeIcon
               icon={faChartBar}
               style={{

@@ -2,14 +2,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Footer } from "./Footer";
 import { faBell } from "@fortawesome/free-regular-svg-icons";
 import { Asset } from "./Assets";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { InformationCircleIcon } from "@heroicons/react/24/solid";
+import { Mycontext } from "../App";
 
-export const Market = ({
-  assetState,
-  prependDollarSign,
-  formatNumberWithCommas,
-}) => {
+export const Market = () => {
+  const { assetState, formatNumberWithCommas, prependDollarSign } =
+    useContext(Mycontext);
   const [dataState, setDataState] = useState();
   const getGlobalMarket = async () => {
     const options = {
