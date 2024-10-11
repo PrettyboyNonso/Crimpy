@@ -19,7 +19,7 @@ export const Transfer = () => {
         </div>
       </div>
       <div className="input-non-clickable">
-        <input type="text" readOnly />
+        <input type="text" disabled />
       </div>
     </div>
   );

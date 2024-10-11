@@ -645,14 +645,14 @@
   }
 
   .transfer-compo {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
     border: 1px solid gray;
     min-height: 22em;
     max-height: fit-content;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
     z-index: 2;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
   }
@@ -662,6 +662,8 @@
     display: flex;
     justify-content: center;
     margin-top: 0.5em;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
   }
 
   .swipe-down {
@@ -674,8 +676,10 @@
 
   .transfer-head-part {
     width: 100%;
-    padding-left: 0.8em;
-    padding-right: 0.8em;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
     display: flex;
     margin-top: 0.8em;
     gap: 1.5em;
