@@ -14,13 +14,15 @@ export const Transfer = () => {
           <div className="other-account-info">
             <p>wise</p>
             <div className="demarcate"></div>
-            <p>111000025123456789</p>
+            <p>19151232456789</p>
           </div>
         </div>
       </div>
       <div className="input-non-clickable">
-        <input type="text" disabled value="$ 900" />
-        <p>
+        <div className="input-div">
+          <p>$ 900</p>
+        </div>
+        <p className="transfer-balance">
           available balance : <b>$350,000</b>
         </p>
       </div>

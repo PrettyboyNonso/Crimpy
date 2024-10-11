@@ -648,8 +648,8 @@
     position: fixed;
     bottom: 0;
     width: 100%;
-    border: 1px solid gray;
-    min-height: 22em;
+    border: 1px solid white;
+    min-height: 27em;
     max-height: fit-content;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
@@ -705,7 +705,7 @@
   .other-account-info p {
     font-family: "Karla", sans-serif;
     text-transform: capitalize;
-    font-size: 13px;
+    font-size: 14px;
   }
 
   .demarcate {
@@ -725,25 +725,28 @@
     gap: 0.5em;
   }
 
-  .input-non-clickable input {
+  .input-non-clickable .input-div {
     width: 90%;
     /* height: 3.2em; */
     border: none;
     border-radius: 10px;
-    padding: 0.5em 0.8em;
-    font-family: "Karla", sans-serif;
-    text-transform: capitalize;
-    font-size: 22px;
+    padding: 0.7em 0.8em;
+
     font-weight: bolder;
     background-color: rgba(161, 161, 161, 0.3);
     box-shadow: none;
   }
 
-  .input-non-clickable p {
-    width: 90%;
+  .input-div p {
+    background-color: transparent;
     font-family: "Karla", sans-serif;
     text-transform: capitalize;
+    font-size: 22px;
+  }
+
+  .transfer-balance {
+    width: 90%;
+    font-family: "Karla", sans-serif;
     font-size: 14px;
-    letter-spacing: 0.1em;
   }
 }
